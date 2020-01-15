@@ -1,0 +1,23 @@
+{
+  "name": "furkan/eunoia",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Furkan",
+      "email": "f.ozdemir40@hotmail.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "app/vendor"
+  },
+  "require": {
+    "ext-pdo": "*",
+    "ext-ctype": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "System\\": "app/classes/System"
+    }
+  }
+}
