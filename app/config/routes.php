@@ -23,4 +23,7 @@ $routes = [
     //Changing dashboard between user or admin
     'dashboard' => $dashboard,
 
+    //Admin routes
+    'add_availability' => 'AvailabilityHandler@add',
+
 ];

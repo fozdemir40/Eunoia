@@ -60,6 +60,7 @@ class AccountHandler extends BaseHandler
             if ($this->user_level == 0){
                 $this->session->set('user', $this->user);
                 header('Location: dashboard');
+                exit;
             } else {
                 $this->session->set('admin', $this->user);
                 header('Location:  admin/dashboard');
