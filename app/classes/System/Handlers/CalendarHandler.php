@@ -165,6 +165,7 @@ class CalendarHandler extends BaseHandler
                         $user_email = $this->session->get('user')->email;
 
                         mail($user_email, 'Afspraak bevestiging', $body, 'From: ' . INFO_EMAIL);
+                        mail(INFO_EMAIL, "Er is een nieuwe reservering gemaakt!", "Bekijk de informatie op uw dashboard", 'From '.INFO_EMAIL);
 
                         unset($stmt);
                         unset($this->db);
