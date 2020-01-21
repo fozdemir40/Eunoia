@@ -296,7 +296,7 @@ if (array_key_exists('Sun', $availabilities)) {
             <div class="col-md-3 float-right">
                 <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/add_availability">+ Beschikbaarheid
                     Toevoegen</a>
-                <a href="<?= BASE_PATH ?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
+                <a href="<?= BASE_PATH ?>admin/dashboard" class="btn btn-secondary">Terug naar dashboard</a>
             </div>
         </div>
     <?php else: ?>
