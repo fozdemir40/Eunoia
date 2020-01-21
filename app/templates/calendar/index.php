@@ -2,6 +2,9 @@
 /**
  * @var $availabilities array
  * @var $errors array
+ * @var $monthName
+ * @var $month
+ * @var $year
  */
 $displayMon = false;
 $displayTue = false;
@@ -40,6 +43,7 @@ if (array_key_exists('Sun', $availabilities)) {
 }
 
 
+
 ?>
 <?php if (isset($errors) && !empty($errors)) { ?>
     <ul class="errors">
@@ -49,8 +53,16 @@ if (array_key_exists('Sun', $availabilities)) {
     </ul>
 <?php } ?>
 <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3><?= $monthName ?>
+                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0,0,0, $month-1, 1, $year)) ?>&y=<?= date('Y', mktime(0,0,0, $month-1, 1, $year))?>"><</a>
+                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0,0,0, $month+1, 1, $year)) ?>&y=<?= date('Y', mktime(0,0,0, $month+1, 1, $year))?>">></a>
+            </h3>
+            <h5><?= $year ?></h5>
+        </div>
+    </div>
     <div class="row ">
-
             <div class="col-lg-2">
                 <h2>Ma</h2>
                 <?php if ($displayMon): ?>

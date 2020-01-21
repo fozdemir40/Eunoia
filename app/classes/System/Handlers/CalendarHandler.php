@@ -39,6 +39,24 @@ class CalendarHandler extends BaseHandler
 
         $month = $currentDate->getCurrentDate()->format("m");
         $year = $currentDate->getCurrentDate()->format("Y");
+        $monthName = $currentDate->getCurrentDate()->format('F');
+
+        if(isset($_GET['m']) && isset($_GET['y'])){
+            $m = filter_input(INPUT_GET, 'm', FILTER_SANITIZE_STRING);
+            $y = filter_input(INPUT_GET, 'y', FILTER_SANITIZE_STRING);
+
+            $month = $m;
+            $year = $y;
+
+            try {
+                $ot = new \DateTime($year . $month . '01');
+                $monthName = $ot->format('F');
+            } catch (\Exception $e) {
+                $this->logger->error($e);
+            }
+
+
+        }
 
         $availableCollection = new AvailabilitiesCollection();
 
@@ -72,6 +90,9 @@ class CalendarHandler extends BaseHandler
 
         $this->renderTemplate([
             'availabilities' => $this->insertAvailabilityInDays ?? false,
+            'monthName' => $monthName ?? false,
+            'month' => $month ?? false,
+            'year' => $year ?? false,
             'errors' => $this->errors
         ]);
 
