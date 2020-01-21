@@ -275,7 +275,7 @@ if (array_key_exists('Sun', $availabilities)) {
     <?php if($adminTools): ?>
         <div class="row justify-content-end">
             <div class="col-md-3 float-right">
-                <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/edit_availability">+ Beschikbaarheid Toevoegen</a>
+                <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/add_availability">+ Beschikbaarheid Toevoegen</a>
             </div>
         </div>
     <?php endif; ?>
