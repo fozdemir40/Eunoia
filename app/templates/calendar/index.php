@@ -61,7 +61,7 @@ if (array_key_exists('Sun', $availabilities)) {
         } ?>
         <?php if (isset($_GET['booking'])) {
             if ($_GET['booking'] == 'success') {
-                echo '<div class="alert alert-success">Uw afspraak is gereserveerd!</div>';
+                echo '<div class="col-md-12"><div class="alert alert-success">Uw afspraak is gereserveerd!</div></div>';
             }
         } ?>
     </div>

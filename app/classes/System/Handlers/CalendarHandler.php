@@ -17,6 +17,7 @@ class CalendarHandler extends BaseHandler
      */
     private $db, $availability, $date, $hulpvraag, $verwachting, $belangrijke_zaken, $for_child;
 
+
     private $adminTools = false;
 
     private $formData;
@@ -155,6 +156,16 @@ class CalendarHandler extends BaseHandler
                     ]);
 
                     if($stmt->rowCount() == 1){
+                        $body = "Uw afspraak staat vast!"
+                            . " Dit email is verstuurt ter bevestiging van uw reservering"
+                            . "Afspraak informatie:\n\n";
+                        $body .= "Start tijd: " . $this->availability->start_time."\n\n";
+                        $body .= "Datum: " .$this->availability->date . "\n\n";
+                        $body .= "Bedankt voor het reservering bij Eunoia!";
+                        $user_email = $this->session->get('user')->email;
+
+                        mail($user_email, 'Afspraak bevestiging', $body, 'From: ' . INFO_EMAIL);
+
                         unset($stmt);
                         unset($this->db);
                         header('Location: '. BASE_PATH . 'calendar?booking=success');
