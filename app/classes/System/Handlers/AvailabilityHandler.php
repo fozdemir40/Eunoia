@@ -70,7 +70,9 @@ class AvailabilityHandler extends BaseHandler
 
             if(isset($this->formData) && empty($this->errors)){
                 if($this->availability->update($this->db)){
-                    $success = "Beschikbaarheid is succesvol gewijzigd!";
+                    header('Location: calendar');
+                    $_SESSION['msg'] = 'Beschikbaarheid is succesvol gewijzigd!';
+                    exit;
                 } else {
                     $this->logger->error(new \Exception("DB Error: {$this->db->errorInfo()}"));
                     $this->errors[] = "Whoops! Een server probleem is ontstaan";
@@ -87,7 +89,6 @@ class AvailabilityHandler extends BaseHandler
         $this->renderTemplate([
             'pageTitle' => 'Beschikbaarheid bewerken',
             'availability' => $this->availability ?? false,
-            'success' => $success ?? false,
             'errors' => $this->errors
         ]);
     }

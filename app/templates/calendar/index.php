@@ -54,6 +54,13 @@ if (array_key_exists('Sun', $availabilities)) {
 <?php } ?>
 <div class="container">
     <div class="row">
+        <?php if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+            setcookie(session_name(),'',time()-3600);
+        } ?>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <h3><?= $monthName ?>
                 <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>

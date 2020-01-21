@@ -19,10 +19,6 @@
                 </ul>
             <?php endif; ?>
 
-            <?php if ($success !== false) { ?>
-                <div class="alert alert-success"><?= $success; ?></div>
-            <?php } ?>
-
             <?php if ($availability !== false): ?>
             <h3>Bewerken - <?= $availability->date ?></h3>
             <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post" enctype="multipart/form-data">
