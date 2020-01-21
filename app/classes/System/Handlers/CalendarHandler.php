@@ -73,7 +73,8 @@ class CalendarHandler extends BaseHandler
                     'id' => $this->availability['reservation_id'],
                     'date' => $this->availability['date'],
                     'start_at' => $this->availability['start_at'],
-                    'end_at' => $this->availability['end_at']
+                    'end_at' => $this->availability['end_at'],
+                    'taken' => $this->availability['taken']
                 );
 
 

@@ -43,7 +43,6 @@ if (array_key_exists('Sun', $availabilities)) {
 }
 
 
-
 ?>
 <?php if (isset($errors) && !empty($errors)) { ?>
     <ul class="errors">
@@ -56,136 +55,150 @@ if (array_key_exists('Sun', $availabilities)) {
     <div class="row">
         <div class="col-md-6">
             <h3><?= $monthName ?>
-                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0,0,0, $month-1, 1, $year)) ?>&y=<?= date('Y', mktime(0,0,0, $month-1, 1, $year))?>"><</a>
-                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0,0,0, $month+1, 1, $year)) ?>&y=<?= date('Y', mktime(0,0,0, $month+1, 1, $year))?>">></a>
+                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
+                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0, 0, 0, $month + 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month + 1, 1, $year)) ?>">></a>
             </h3>
             <h5><?= $year ?></h5>
         </div>
     </div>
     <div class="row ">
-            <div class="col-lg-2">
-                <h2>Ma</h2>
-                <?php if ($displayMon): ?>
+        <div class="col-lg-2">
+            <h2>Ma</h2>
+            <?php if ($displayMon): ?>
                 <?php foreach ($availabilities['Mon'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
 
-            <div class="col-md-2">
-                <h2>Di</h2>
-                <?php if ($displayTue): ?>
+        <div class="col-md-2">
+            <h2>Di</h2>
+            <?php if ($displayTue): ?>
                 <?php foreach ($availabilities['Tue'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
 
-            <div class="col-md-2">
-                <h2>Wo</h2>
-                <?php if ($displayWed): ?>
+        <div class="col-md-2">
+            <h2>Wo</h2>
+            <?php if ($displayWed): ?>
                 <?php foreach ($availabilities['Wed'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
 
-            <div class="col-md-2">
-                <h2>Do</h2>
-                <?php if ($displayThu): ?>
+        <div class="col-md-2">
+            <h2>Do</h2>
+            <?php if ($displayThu): ?>
                 <?php foreach ($availabilities['Thu'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
 
-            <div class="col-md-2">
-                <h2>Vr</h2>
-                <?php if ($displayFri): ?>
+        <div class="col-md-2">
+            <h2>Vr</h2>
+            <?php if ($displayFri): ?>
                 <?php foreach ($availabilities['Fri'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
-            <div class="col-md-2">
-                <h2>Za</h2>
-                <?php if ($displaySat): ?>
+        <div class="col-md-2">
+            <h2>Za</h2>
+            <?php if ($displaySat): ?>
                 <?php foreach ($availabilities['Sat'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
 
-            <div class="col-md-2">
-                <h2>Zo</h2>
-                <?php if ($displaySun): ?>
+        <div class="col-md-2">
+            <h2>Zo</h2>
+            <?php if ($displaySun): ?>
                 <?php foreach ($availabilities['Sun'] as $availability): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $availability['date'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
-                                - <?= $availability['end_at'] ?> </h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                    <?php if ($availability['taken'] == 0): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $availability['date'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
+                                    - <?= $availability['end_at'] ?> </h6>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
     </div>
 </div>
