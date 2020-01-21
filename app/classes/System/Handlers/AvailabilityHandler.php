@@ -55,11 +55,50 @@ class AvailabilityHandler extends BaseHandler
             'success' => $success ?? false,
             'errors' => $this->errors
         ]);
+    }
 
+    protected function edit()
+    {
+        if(!$this->session->keyExists('admin')){
+            header('Location: notfound');
+            exit;
+        }
+
+        try{
+            $this->availability = Availability::getById($_GET['id'], $this->db);
+            $this->executePostHandler();
+
+            if(isset($this->formData) && empty($this->errors)){
+                if($this->availability->update($this->db)){
+                    $success = "Beschikbaarheid is succesvol gewijzigd!";
+                } else {
+                    $this->logger->error(new \Exception("DB Error: {$this->db->errorInfo()}"));
+                    $this->errors[] = "Whoops! Een server probleem is ontstaan";
+                }
+            }
+
+
+        } catch (\Exception $e){
+            $this->logger->error($e);
+            $this->errors[] = "Whoops: " . $e->getMessage();
+            $pageTitle = 'Album does\'t exist';
+        }
+
+        $this->renderTemplate([
+            'pageTitle' => 'Beschikbaarheid bewerken',
+            'availability' => $this->availability ?? false,
+            'success' => $success ?? false,
+            'errors' => $this->errors
+        ]);
     }
 
     protected function delete()
     {
+        if(!$this->session->keyExists('admin')){
+            header('Location: notfound');
+            exit;
+        }
+
         try{
             $availability = Availability::getById($_GET['id'], $this->db);
 
