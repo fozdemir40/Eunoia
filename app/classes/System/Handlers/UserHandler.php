@@ -1,6 +1,7 @@
 <?php namespace System\Handlers;
 
 
+use System\Children\AllChildren;
 use System\Children\Child;
 use System\Databases\Database;
 
@@ -20,12 +21,18 @@ class UserHandler extends BaseHandler
         $this->db = (new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME))->getConnection();
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function dashboard()
     {
         if($this->session->keyExists('user')){
 
             $user = $this->session->get('user');
             $userFirstName  = $user->first_name;
+
+            $allChildren = new AllChildren();
+            $allChildren->add(Child::getByParenId($user->user_id, $this->db));
 
 
 
@@ -36,6 +43,7 @@ class UserHandler extends BaseHandler
 
         $this->renderTemplate([
             'pageTitle' => 'User Dashboard',
+            'children' => $allChildren->get(),
             'userFirstName' => $userFirstName,
             'errors' => $this->errors
         ]);
@@ -72,6 +80,68 @@ class UserHandler extends BaseHandler
             'errors' => $this->errors
         ]);
 
+    }
+
+    protected function edit_child()
+    {
+        if(!$this->session->keyExists('user')){
+            header('Location: notfound');
+            exit;
+        }
+
+        try{
+
+            $this->child = Child::getById($_GET['id'], $this->db);
+            $this->executePostChild();
+
+            if (isset($this->formData) && empty($this->errors)){
+                if ($this->child->update($this->db)){
+                    header('Location: dashboard');
+                    $_SESSION['msg'] = $this->child->child_name . " is succesvol gewijzigd";
+                    exit;
+                } else {
+                    $this->logger->error(new \Exception("Db Error"));
+                    $this->errors[] = "Whoops, someting went wrong";
+                }
+            }
+
+            $pageTitle = $this->child->child_name . "- Bewerken";
+        } catch (\Exception $e) {
+            $this->logger->error($e);
+            $this->errors[] = "Whoops: " . $e->getMessage();
+            $pageTitle = 'Child does not exist';
+        }
+
+        $this->renderTemplate([
+            'pageTitle' => $pageTitle,
+            'child' => $this->child ?? false,
+            'errors' => $this->errors
+        ]);
+    }
+
+    protected function delete_child()
+    {
+        if(!$this->session->keyExists('user')){
+            header('Location: notfound');
+            exit;
+        }
+
+        try{
+            $child = Child::getById($_GET['id'], $this->db);
+
+            if($child){
+                $child->delete($this->db);
+
+                header('Location: dashboard');
+                exit;
+
+            }
+
+        } catch (\Exception $e){
+            $this->logger->error($e);
+            header('Location: '. BASE_PATH);
+            exit;
+        }
     }
 
 }

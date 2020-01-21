@@ -83,7 +83,7 @@ class AvailabilityHandler extends BaseHandler
         } catch (\Exception $e){
             $this->logger->error($e);
             $this->errors[] = "Whoops: " . $e->getMessage();
-            $pageTitle = 'Album does\'t exist';
+            $pageTitle = 'Availability does\'t exist';
         }
 
         $this->renderTemplate([
