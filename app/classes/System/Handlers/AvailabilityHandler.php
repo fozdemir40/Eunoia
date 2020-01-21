@@ -57,4 +57,24 @@ class AvailabilityHandler extends BaseHandler
         ]);
 
     }
+
+    protected function delete()
+    {
+        try{
+            $availability = Availability::getById($_GET['id'], $this->db);
+
+            if($availability){
+                $availability->delete($this->db);
+
+                header('Location: calendar');
+                exit;
+
+            }
+
+        } catch (\Exception $e){
+            $this->logger->error($e);
+            header('Location: '. BASE_PATH);
+            exit;
+        }
+    }
 }

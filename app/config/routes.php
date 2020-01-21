@@ -25,6 +25,7 @@ $routes = [
 
     //Admin routes
     'add_availability' => 'AvailabilityHandler@add',
+    'delete_availability' => 'AvailabilityHandler@delete',
 
     //Calender routes
     'calendar' => 'CalendarHandler@index'

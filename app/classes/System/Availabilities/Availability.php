@@ -36,6 +36,27 @@ class Availability
         return $db->query("SELECT * FROM reservations")->fetchAll(\PDO::FETCH_CLASS, "System\\Availabilities\\Availability");
     }
 
+
+    /**
+     * Get a specific availability by its ID
+     *
+     * @param int $id
+     * @param \PDO $db
+     * @return Availability
+     * @throws \Exception
+     */
+    static public function getById(int $id, \PDO $db): Availability
+    {
+        $statement = $db->prepare("SELECT * FROM reservations WHERE reservation_id = :id");
+        $statement->execute([':id' => $id]);
+
+        if (($album = $statement->fetchObject("System\\Availabilities\\Availability")) === false) {
+            throw new \Exception("Availability ID {$id} is not available in the database");
+        }
+
+        return $album;
+    }
+
     /**
      * @param \PDO $db
      * @param $month
