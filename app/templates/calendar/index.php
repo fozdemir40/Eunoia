@@ -54,10 +54,10 @@ if (array_key_exists('Sun', $availabilities)) {
 <?php } ?>
 <div class="container">
     <div class="row">
-        <?php if(isset($_SESSION['msg'])){
+        <?php if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             unset($_SESSION['msg']);
-            setcookie(session_name(),'',time()-3600);
+            setcookie(session_name(), '', time() - 3600);
         } ?>
     </div>
     <div class="row">
@@ -82,14 +82,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -111,14 +113,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -140,14 +144,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -169,14 +175,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -198,14 +206,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -226,14 +236,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -255,14 +267,16 @@ if (array_key_exists('Sun', $availabilities)) {
                                     - <?= $availability['end_at'] ?> </h6>
                             </div>
 
-                            <?php if($adminTools):?>
+                            <?php if ($adminTools): ?>
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
-                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                    <a class="btn btn-warning"
+                                       href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id'] ?>">Delete</a>
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -272,11 +286,19 @@ if (array_key_exists('Sun', $availabilities)) {
         </div>
 
     </div>
-    <?php if($adminTools): ?>
+    <?php if ($adminTools): ?>
         <div class="row justify-content-end">
             <div class="col-md-3 float-right">
-                <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/add_availability">+ Beschikbaarheid Toevoegen</a>
+                <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/add_availability">+ Beschikbaarheid
+                    Toevoegen</a>
+                <a href="<?= BASE_PATH ?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
             </div>
         </div>
-    <?php endif; ?>
+    <?php else: ?>
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <a href="<?= BASE_PATH ?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
+            </div>
+        </div>
+    <?php endif ?>
 </div>

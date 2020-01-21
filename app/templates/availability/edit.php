@@ -40,4 +40,9 @@
             <?php endif; ?>
         </div>
     </div>
+    <div class="row justify-content-end">
+        <div class="col-md-3">
+            <a href="<?= BASE_PATH?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
+        </div>
+    </div>
 </div>

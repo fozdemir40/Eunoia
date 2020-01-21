@@ -40,6 +40,7 @@
                 </div>
 
                 <input type="submit" class="btn btn-primary" name="add-child" value="Toevoegen">
+                <a href="<?= BASE_PATH ?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
             </form>
         </div>
     </div>
