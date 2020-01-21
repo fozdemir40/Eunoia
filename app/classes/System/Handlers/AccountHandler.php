@@ -432,20 +432,7 @@ class AccountHandler extends BaseHandler
         ]);
     }
 
-    protected function dashboard()
-    {
-        if($this->session->keyExists('user')){
 
-        } else {
-            header('Location: notfound');
-            exit;
-        }
-
-        $this->renderTemplate([
-            'pageTitle' => 'User Dashboard',
-            'errors' => $this->errors
-        ]);
-    }
 
 
 }

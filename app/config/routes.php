@@ -2,7 +2,7 @@
 
 //Check if url has "admin" in it
 if (strpos($_SERVER['REQUEST_URI'], "admin") == false) {
-    $dashboard = 'AccountHandler@dashboard';
+    $dashboard = 'UserHandler@dashboard';
 } else {
     //AdminHandler
     $dashboard = 'AdminHandler@dashboard';
@@ -27,6 +27,10 @@ $routes = [
     'add_availability' => 'AvailabilityHandler@add',
     'delete_availability' => 'AvailabilityHandler@delete',
     'edit_availability' => 'AvailabilityHandler@edit',
+
+
+    //User routes
+    'add_child' => 'UserHandler@add_child',
 
     //Calender routes
     'calendar' => 'CalendarHandler@index'
