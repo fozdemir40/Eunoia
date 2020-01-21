@@ -14,7 +14,7 @@
                 <a href="<?= BASE_PATH; ?>admin/add_availability" class="badge badge-success">Voeg beschikbaarheid toe</a>
             </div>
             <div class="col-sm-4">
-                <a href="<?= BASE_PATH; ?>admin/calendar" class="badge badge-success">Bekijk Agenda</a>
+                <a href="<?= BASE_PATH; ?>calendar" class="badge badge-success">Bekijk Agenda</a>
             </div>
             <div class="col-sm-4">
                 <a href="<?= BASE_PATH; ?>logout" class="badge badge-primary">logout here</a>

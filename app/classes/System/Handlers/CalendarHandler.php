@@ -13,7 +13,7 @@ class CalendarHandler extends BaseHandler
      */
     private $db, $availability, $date;
 
-    private $dataDb = [];
+    private $adminTools = false;
 
     private $dayLabel;
 
@@ -34,6 +34,10 @@ class CalendarHandler extends BaseHandler
 
     protected function index()
     {
+
+        if ($this->session->keyExists('admin')) {
+            $this->adminTools = true;
+        }
 
         $currentDate = new Date();
 
@@ -94,6 +98,7 @@ class CalendarHandler extends BaseHandler
             'monthName' => $monthName ?? false,
             'month' => $month ?? false,
             'year' => $year ?? false,
+            'adminTools' => $this->adminTools,
             'errors' => $this->errors
         ]);
 

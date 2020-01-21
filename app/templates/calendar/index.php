@@ -5,6 +5,7 @@
  * @var $monthName
  * @var $month
  * @var $year
+ * @var $adminTools
  */
 $displayMon = false;
 $displayTue = false;
@@ -55,8 +56,8 @@ if (array_key_exists('Sun', $availabilities)) {
     <div class="row">
         <div class="col-md-6">
             <h3><?= $monthName ?>
-                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
-                <a href="<?= BASE_PATH; ?>admin/calendar?m=<?= date('m', mktime(0, 0, 0, $month + 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month + 1, 1, $year)) ?>">></a>
+                <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
+                <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month + 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month + 1, 1, $year)) ?>">></a>
             </h3>
             <h5><?= $year ?></h5>
         </div>
@@ -72,9 +73,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -92,9 +102,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -112,9 +131,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -132,9 +160,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -152,9 +189,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -171,9 +217,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -191,9 +246,18 @@ if (array_key_exists('Sun', $availabilities)) {
                                 <h5 class="card-title"><?= $availability['date'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $availability['start_at'] ?>
                                     - <?= $availability['end_at'] ?> </h6>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
                             </div>
+
+                            <?php if($adminTools):?>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-warning" href="<?= BASE_PATH; ?>admin/edit_availability?id=<?= $availability['id']?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?= BASE_PATH; ?>admin/delete_availability?id=<?= $availability['id']?>">Delete</a>
+                                </div>
+
+                            <?php else: ?>
+                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>book?id=<?= $availability['id']?>">Reserveren</a>
+                            <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -201,4 +265,11 @@ if (array_key_exists('Sun', $availabilities)) {
         </div>
 
     </div>
+    <?php if($adminTools): ?>
+        <div class="row justify-content-end">
+            <div class="col-md-3 float-right">
+                <a class="btn btn-success" href="<?= BASE_PATH; ?>admin/edit_availability">+ Beschikbaarheid Toevoegen</a>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
