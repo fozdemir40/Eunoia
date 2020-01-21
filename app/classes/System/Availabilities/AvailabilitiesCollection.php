@@ -24,4 +24,9 @@ class AvailabilitiesCollection
         $this->availability = $reservation;
     }
 
+    public function getTotal(): int
+    {
+        return count($this->availability);
+    }
+
 }

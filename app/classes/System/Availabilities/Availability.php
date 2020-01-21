@@ -29,6 +29,39 @@ class Availability
 
     /**
      * @param \PDO $db
+     * @return array
+     */
+    static public function getAll(\PDO $db): array
+    {
+        return $db->query("SELECT * FROM reservations")->fetchAll(\PDO::FETCH_CLASS, "System\\Availabilities\\Availability");
+    }
+
+    /**
+     * @param \PDO $db
+     * @param $month
+     * @param $year
+     * @return Availability
+     * @throws \Exception
+     */
+    static public function getByMonthAndYear(\PDO $db, $month, $year): array
+    {
+        $query = "SELECT reservation_id, date, start_at, end_at, taken FROM reservations WHERE MONTH(date) = :m AND YEAR(date) = :y ";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+           ':m' => $month,
+            ':y' => $year
+        ]);
+
+        if(($available = $stmt->fetchAll()) == false){
+            throw new \Exception("No records found");
+        }
+
+        return $available;
+    }
+
+
+    /**
+     * @param \PDO $db
      * @return bool
      */
     public function delete(\PDO $db): bool

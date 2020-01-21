@@ -11,7 +11,7 @@ if (strpos($_SERVER['REQUEST_URI'], "admin") == false) {
 $routes = [
     '' => 'HomeHandler@index',
 
-    //AccountHandler
+    //Account routes
     'login' => 'AccountHandler@login',
     'register' => 'AccountHandler@register',
     'logout' => 'AccountHandler@logout',
@@ -25,5 +25,8 @@ $routes = [
 
     //Admin routes
     'add_availability' => 'AvailabilityHandler@add',
+
+    //Calender routes
+    'calendar' => 'CalendarHandler@index'
 
 ];
