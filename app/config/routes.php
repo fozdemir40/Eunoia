@@ -35,6 +35,8 @@ $routes = [
     'edit_child' => 'UserHandler@edit_child',
 
     //Calender routes
-    'calendar' => 'CalendarHandler@index'
+    'calendar' => 'CalendarHandler@index',
+    'book' => 'CalendarHandler@book',
+
 
 ];

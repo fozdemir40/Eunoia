@@ -4,12 +4,17 @@
 use System\Children\AllChildren;
 use System\Children\Child;
 use System\Databases\Database;
+use System\Availabilities\Availability;
+use System\Form\Data;
+use System\Form\Validation\BookingValidator;
 
 class UserHandler extends BaseHandler
 {
     use ChildFillAndValidate;
 
     private $child;
+
+    private $availability;
 
     private $formData;
 
