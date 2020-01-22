@@ -11,31 +11,50 @@
         <?php } ?>
     </ul>
 <?php } ?>
+<div class="container h-100">
+    <div class="row">
+        <div class="col-lg-12">
+            <?php if (isset($_GET['newpwd'])) {
+                if ($_GET['newpwd'] == 'passwordupdated') {
+                    echo '<div class="alert alert-success">Uw wachtwoord is succevol gewijzigd!</div>';
+                }
+            } ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mx-auto min-vh-100 d-flex flex-column justify-content-center">
+            <h1 class="login-text">Inloggen</h1>
+            <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
+                <div class="form-group">
+                    <label for="email">E-mail: </label>
+                    <input class="form-control" type="text" name="email" id="email" value="<?= ($email !== false ? $email : '') ?>"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord: </label>
+                    <input class="form-control" type="password" name="password" id="password"/>
+                </div>
+                <div class="util-login mb-3">
+                    <div class="forgot-pass">
+                        <a href="<?= BASE_PATH ?>reset_password">Wachtwoord vergeten? Klik hier</a>
+                    </div>
+                    <div class="register">
+                        <a href="<?= BASE_PATH ?>register">Nieuw hier? Klik hier</a>
+                    </div>
 
-<fieldset>
-    <legend>Login</legend>
-    <?php if (isset($_GET['newpwd'])) {
-        if ($_GET['newpwd'] == 'passwordupdated') {
-            echo '<div class="alert alert-success">Uw wachtwoord is succevol gewijzigd!</div>';
-        }
-    } ?>
-    <?php echo isset($msg) ? $msg : ''; ?>
-    <form id="login" action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
-        <p>
-            <label for="email">E-mail: </label>
-            <input type="text" name="email" id="email" value="<?= ($email !== false ? $email : '') ?>"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </form>
+        </div>
 
-        </p>
-        <p>
-            <label for="password">Wachtwoord: </label>
-            <input type="password" name="password" id="password"/>
+    </div>
+</div>
 
-        </p>
-        <p>
-            <a href="<?= BASE_PATH ?>reset_password">Forgot password? Click here.</a>
-        </p>
-        <p>
-            <input type="submit" name="submit" value="Login"/>
-        </p>
-    </form>
-</fieldset>
+
+
+
+
+
+
+
+
+
