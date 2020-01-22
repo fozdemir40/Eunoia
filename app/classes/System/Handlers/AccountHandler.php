@@ -96,8 +96,12 @@ class AccountHandler extends BaseHandler
             $ln = $formData->getPostVar('last_name');
             $p = $formData->getPostVar('password');
             $cp = $formData->getPostVar('cpassword');
+            $tel = $formData->getPostVar('phone');
+            $address = $formData->getPostVar('address');
+            $city = $formData->getPostVar('city');
+            $date = $formData->getPostVar('birthdate');
 
-            $validator = new RegisterValidator($fn, $ln, $e, $p, $cp);
+            $validator = new RegisterValidator($fn, $ln, $e, $p, $cp, $tel, $address, $city, $date);
             $validator->validate();
             $this->errors = $validator->getErrors();
 
@@ -129,6 +133,10 @@ class AccountHandler extends BaseHandler
                     $user->last_name = $ln;
                     $user->active = $active;
                     $user->password = password_hash($p, PASSWORD_ARGON2I);
+                    $user->phone = $tel;
+                    $user->address = $address;
+                    $user->city = $city;
+                    $user->birthdate = $date;
 
                     if (User::add($user, $this->db)){
                         $body = "Thank you for registering at Eunoia."
@@ -141,7 +149,7 @@ class AccountHandler extends BaseHandler
                     }
 
                     if(isset($formData) && empty($this->errors)){
-                        header('Location: ' . BASE_URL);
+                        header('Location: login?newuser=success');
                         exit;
                     }
 

@@ -6,7 +6,7 @@ use System\Form\Data;
 class RegisterValidator implements Validator
 {
     private $errors = [];
-    private $firstname, $lastname, $email, $password, $cpassword;
+    private $firstname, $lastname, $email, $password, $cpassword, $tel, $address, $city, $date;
 
     /**
      * RegisterValidator constructor.
@@ -15,14 +15,22 @@ class RegisterValidator implements Validator
      * @param $email
      * @param $password
      * @param $cpassword
+     * @param $tel
+     * @param $address
+     * @param $city
+     * @param $date
      */
-    public function __construct($firstname, $lastname, $email, $password, $cpassword)
+    public function __construct($firstname, $lastname, $email, $password, $cpassword, $tel, $address, $city, $date)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->password = $password;
         $this->cpassword = $cpassword;
+        $this->tel = $tel;
+        $this->address = $address;
+        $this->city = $city;
+        $this->date = $date;
     }
 
 
@@ -51,6 +59,10 @@ class RegisterValidator implements Validator
 
         if (!$this->password == $this->cpassword) {
             $errors['cpassword'] = 'Please make sure to enter the same password';
+        }
+
+        if($this->tel || $this->date || $this->address || $this->city){
+            $errors['phone'] = 'Veld mag niet leeg zijn';
         }
     }
 

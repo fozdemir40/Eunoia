@@ -18,7 +18,11 @@
                 if ($_GET['newpwd'] == 'passwordupdated') {
                     echo '<div class="alert alert-success">Uw wachtwoord is succevol gewijzigd!</div>';
                 }
-            } ?>
+            } elseif (isset($_GET['newuser'])){
+                if($_GET['newuser'] == 'success'){
+                    echo '<div class="alert alert-success">Een acteverings email is verstuurd! Om in te loggen moet u eerst uw account activeren.</div>';
+                }
+            }?>
         </div>
     </div>
     <div class="row">
@@ -42,7 +46,7 @@
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary">Log in</button>
+                <button type="submit" class="btn btn-primary" name="submit">Log in</button>
             </form>
         </div>
 

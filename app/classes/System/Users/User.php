@@ -7,7 +7,7 @@
  */
 class User
 {
-    public $id, $username, $email, $password, $first_name, $last_name, $active, $user_level;
+    public $id, $username, $email, $password, $first_name, $last_name, $phone, $address, $city, $birthdate, $active, $user_level;
 
     /**
      * @param User $user
@@ -18,9 +18,9 @@ class User
     {
         $query = "INSERT INTO users"
             . "(username, first_name, last_name, email, active, password, "
-            . "registration_date)"
+            . "registration_date, phone, address, city, birthdate)"
             . "VALUES"
-            . "(:username,:first_name,:last_name,:email,:active,:password,UTC_TIMESTAMP())";
+            . "(:username,:first_name,:last_name,:email,:active,:password,UTC_TIMESTAMP(), :phone, :address, :city, :birthdate)";
         $stmt = $db->prepare($query);
         return $stmt->execute([
            ':username' => $user->username,
@@ -28,7 +28,12 @@ class User
            ':last_name' => $user->last_name,
             ':email' => $user->email,
             ':active' => $user->active,
-            ':password' => $user->password
+            ':password' => $user->password,
+            ':phone' => $user->phone,
+            ':address' => $user->address,
+            ':city' => $user->city,
+            ':birthdate' => $user->birthdate
+
         ]);
 
     }
