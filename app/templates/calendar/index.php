@@ -67,9 +67,7 @@ if (array_key_exists('Sun', $availabilities)) {
             <h4><?= $monthName ?> <?php if ($currentMonth == $month && $currentYear == $year): ?>
 
                 <?php else: ?>
-
                     <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
-
                 <?php endif; ?>
 
                 <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month + 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month + 1, 1, $year)) ?>">></a>

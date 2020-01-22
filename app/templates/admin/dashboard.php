@@ -42,6 +42,9 @@
                         <th>Date</th>
                         <th>Tijd</th>
                         <th>Kind</th>
+                        <th>Hulpvraag</th>
+                        <th>Verwachting</th>
+                        <th>Belangrijke zaken</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -54,6 +57,9 @@
                             <td><?= $booking->date ?></td>
                             <td><?= $booking->start_at . ' - ' . $booking->end_at ?></td>
                             <td><?= $booking->for_child ?></td>
+                            <td><?= $booking->hulpvraag ?></td>
+                            <td><?= $booking->verwachting ?></td>
+                            <td><?= $booking->belangrijke_zaken ?></td>
                             <td>
                                 <a class="btn btn-primary" href="<?= BASE_PATH ?>admin/complete?id=<?= $booking->reservation_id ?>">Afronden</a>
                             </td>

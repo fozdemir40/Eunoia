@@ -68,7 +68,7 @@ class Availability
      */
     static public function getAllTaken(\PDO $db): array
     {
-        $query = "SELECT users.first_name, users.last_name, users.email, reservations.reservation_id,reservations.date, reservations.start_at, reservations.end_at, reservations.for_child, reservations.completed
+        $query = "SELECT users.first_name, users.last_name, users.email, reservations.reservation_id,reservations.date, reservations.hulpvraag, reservations.verwachting, reservations.belangrijke_zaken ,reservations.start_at, reservations.end_at, reservations.for_child, reservations.completed
                     FROM users INNER JOIN reservations ON reservations.taken_by = users.user_id 
                     WHERE taken = 1";;
         $stmt = $db->prepare($query);
