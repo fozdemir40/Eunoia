@@ -30,7 +30,10 @@ class AccountHandler extends BaseHandler
     protected function login()
     {
         if ($this->session->keyExists('user')) {
-            header('Location: ' . BASE_URL);
+            header('Location: dashboard' );
+            exit;
+        } elseif($this->session->keyExists('admin')){
+            header('Location: admin/dashboard');
             exit;
         }
 

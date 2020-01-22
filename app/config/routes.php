@@ -9,10 +9,9 @@ if (strpos($_SERVER['REQUEST_URI'], "admin") == false) {
 }
 
 $routes = [
-    '' => 'HomeHandler@index',
+    '' => 'AccountHandler@login',
 
     //Account routes
-    'login' => 'AccountHandler@login',
     'register' => 'AccountHandler@register',
     'logout' => 'AccountHandler@logout',
 
