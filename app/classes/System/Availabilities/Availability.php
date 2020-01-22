@@ -62,6 +62,22 @@ class Availability
         return $available;
     }
 
+    static public function getAllTaken(\PDO $db): array
+    {
+        $query = "SELECT users.first_name, users.last_name, users.email, reservations.reservation_id,reservations.date, reservations.start_at, reservations.end_at, reservations.for_child 
+                    FROM users INNER JOIN reservations ON reservations.taken_by = users.user_id 
+                    WHERE taken = 1";;
+        $stmt = $db->prepare($query);
+        $taken = 1;
+        $stmt->execute([
+           ':taken' => $taken
+        ]);
+
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"System\\Availabilities\\Availability");
+
+        return $result;
+    }
+
     /**
      * @param Availability $availability
      * @param \PDO $db
@@ -93,6 +109,21 @@ class Availability
             ':dateP' => $this->date,
             ':start_at' => $this->start_time,
             ':end_at' => $this->end_time,
+            ':id' => $this->reservation_id
+        ]);
+    }
+
+    /**
+     * @param \PDO $db
+     * @return bool
+     */
+    public function complete(\PDO $db): bool
+    {
+        $query = "UPDATE reservations SET completed = :completed WHERE reservation_id = :id";
+        $completed = 1;
+        $stmt = $db->prepare($query);
+        return $stmt->execute([
+            ':completed' => $completed,
             ':id' => $this->reservation_id
         ]);
     }
