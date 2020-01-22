@@ -36,4 +36,9 @@ class AdminHandler extends BaseHandler
             'errors' => $this->errors,
         ]);
     }
+
+    protected function history()
+    {
+
+    }
 }

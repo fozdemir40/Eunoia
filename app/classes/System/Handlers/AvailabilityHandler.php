@@ -136,8 +136,15 @@ class AvailabilityHandler extends BaseHandler
                         $availability->complete($this->db);
 
                         if($stmt->rowCount() == 1){
+
+                            $body = "Afspraak is afgerond!\n\n"
+                                . " U kunt eventuele informatie vinden in uw afspraak geschiedenis\n\n";
+                            $user_email = $this->session->get('user')->email;
+
+                            mail($user_email, 'Afronding afpsraak', $body, 'From: ' . INFO_EMAIL);
                             unset($stmt);
                             unset($this->db);
+
                             header('Location: ' . BASE_PATH . 'admin/dashboard?booking=completed');
                             exit;
                         }
