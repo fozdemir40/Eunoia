@@ -143,9 +143,6 @@ class AccountHandler extends BaseHandler
                             . "To activate your account, please click on this link:\n\n";
                         $body .= BASE_URL . 'activate?x=' . urldecode($e) . '&y=' . $active;
                         mail($e, 'Registration Confirmation', $body, 'From: ' . INFO_EMAIL);
-                        $_SESSION['msg'] = '<p>Bedankt voor het registreren! '
-                            . 'Een activeringsemail is verstuurd, '
-                            . 'Klik op de bijhorende email om uw account te activeren</p>';
                     }
 
                     if(isset($formData) && empty($this->errors)){
