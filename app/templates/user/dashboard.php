@@ -10,21 +10,27 @@
 
 <?php if (isset($_SESSION['user'])): ?>
     <div class="container">
-        <div class="row">
-            <h1>Hallo! <?= $userFirstName ?></h1>
+        <div class="navbar" style="background-color: #B1B695; color: white;">
+            <div class="row">
+                    <h1 class="pl-5">Hallo! <?= $userFirstName ?></h1>
+            </div>
+            <div class="row">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= BASE_PATH; ?>calendar">Bekijk Agenda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_PATH; ?>history">Afspraak geschiedenis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_PATH; ?>logout">Uitloggen</a>
+                        </li>
+                    </ul>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <a href="<?= BASE_PATH; ?>calendar" class="btn btn-success">Bekijk Agenda</a>
-            </div>
-            <div class="col-sm-3">
-                <a href="<?= BASE_PATH; ?>history" class="btn btn-success">Afspraak geschiedenis</a>
-            </div>
-            <div class="col-sm-3">
-                <a href="<?= BASE_PATH; ?>logout" class="btn btn-primary">Logout here</a>
-            </div>
-        </div>
-        <div class="row">
+
+
+        <div class="row mt-5">
             <h3>Mijn kinderen</h3>
         </div>
         <?php if (!empty($children)): ?>
