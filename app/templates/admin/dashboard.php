@@ -44,6 +44,7 @@
                     </thead>
                     <tbody >
                     <?php foreach ($bookings as $booking): ?>
+                        <?php if(!$booking->completed == 1): ?>
                         <tr>
                             <td><?= $booking->first_name ?></td>
                             <td><?= $booking->email ?></td>
@@ -54,6 +55,7 @@
                                 <a class="btn btn-primary" href="<?= BASE_PATH ?>admin/complete?id=<?= $booking->reservation_id ?>">Afronden</a>
                             </td>
                         </tr>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                     </tbody>
 
