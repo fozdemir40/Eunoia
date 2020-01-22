@@ -6,6 +6,8 @@
  * @var $month
  * @var $year
  * @var $adminTools
+ * @var $currentMonth
+ * @var $currentYear
  */
 $displayMon = false;
 $displayTue = false;
@@ -44,6 +46,7 @@ if (array_key_exists('Sun', $availabilities)) {
 }
 
 
+
 ?>
 <?php if (isset($errors) && !empty($errors)) { ?>
     <ul class="errors">
@@ -68,7 +71,11 @@ if (array_key_exists('Sun', $availabilities)) {
     <div class="row">
         <div class="col-md-6">
             <h3><?= $monthName ?>
-                <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
+                <?php if ($currentMonth == $month && $currentYear == $year): ?>
+
+                <?php else: ?>
+                    <a  href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month - 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month - 1, 1, $year)) ?>"><</a>
+                <?php endif; ?>
                 <a href="<?= BASE_PATH; ?>calendar?m=<?= date('m', mktime(0, 0, 0, $month + 1, 1, $year)) ?>&y=<?= date('Y', mktime(0, 0, 0, $month + 1, 1, $year)) ?>">></a>
             </h3>
             <h5><?= $year ?></h5>
@@ -96,7 +103,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -127,7 +135,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -158,7 +167,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -189,7 +199,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -220,7 +231,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -250,7 +262,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>
@@ -281,7 +294,8 @@ if (array_key_exists('Sun', $availabilities)) {
                                 </div>
 
                             <?php else: ?>
-                                <a class="btn btn-primary" href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
+                                <a class="btn btn-primary"
+                                   href="<?= BASE_PATH; ?>calendar/book?id=<?= $availability['id'] ?>">Reserveren</a>
                             <?php endif; ?>
 
                         </div>

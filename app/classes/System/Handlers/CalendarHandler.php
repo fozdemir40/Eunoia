@@ -106,6 +106,8 @@ class CalendarHandler extends BaseHandler
             'month' => $month ?? false,
             'year' => $year ?? false,
             'adminTools' => $this->adminTools,
+            'currentMonth' => $currentDate->getCurrentDate()->format('m'),
+            'currentYear' => $currentDate->getCurrentDate()->format('Y'),
             'errors' => $this->errors
         ]);
 
