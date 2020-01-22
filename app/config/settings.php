@@ -15,7 +15,7 @@ define("INCLUDES_PATH", __DIR__ . "/../");
 define("LOG_PATH", "../app/logs/");
 define("BASE_PATH", "/");
 define("BASE_URL", "http://eunoia.local/");
-define("RESOURCES_PATH", "public/");
+define("RESOURCES_PATH", "");
 
 // Custom error handler
 set_error_handler(function ($severity, $message, $file, $line) {

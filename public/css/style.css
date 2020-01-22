@@ -1,0 +1,19 @@
+/* Eunoia colors:
+    -Platinum #E5E5DE
+    -Ash grey #AABFB2
+    -Laurel green #B1B695
+    -Rifle green #3C493F
+    -Rose taupe #936057
+ */
+
+body{
+    background-color: #E5E5DE;
+}
+
+.welcome-text{
+    color: #3C493F;
+}
+
+.display-text{
+    color: #936057;
+}
