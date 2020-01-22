@@ -62,6 +62,10 @@ class Availability
         return $available;
     }
 
+    /**
+     * @param \PDO $db
+     * @return array
+     */
     static public function getAllTaken(\PDO $db): array
     {
         $query = "SELECT users.first_name, users.last_name, users.email, reservations.reservation_id,reservations.date, reservations.start_at, reservations.end_at, reservations.for_child, reservations.completed
@@ -71,6 +75,32 @@ class Availability
         $taken = 1;
         $stmt->execute([
            ':taken' => $taken
+        ]);
+
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"System\\Availabilities\\Availability");
+
+        return $result;
+    }
+
+    /**
+     * @param \PDO $db
+     * @return array
+     */
+    static public function getAllCompleted(\PDO $db): array
+    {
+        $query = "SELECT users.first_name, users.last_name, users.email, reservations.date, 
+                    reservations.start_at, reservations.end_at, reservations.for_child, reservations.completed, reservation_history.message, reserv_type.type
+                    FROM users 
+                    INNER JOIN reservations ON reservations.taken_by = users.user_id 
+                    INNER JOIN reservation_history ON reservation_history.reservation_id = reservations.reservation_id
+                    INNER JOIN reserv_type ON reservation_history.reserv_type_id = reserv_type.reserv_type_id
+                    WHERE taken = :taken AND completed = :completed";
+        $stmt = $db->prepare($query);
+        $taken = 1;
+        $completed = 1;
+        $stmt->execute([
+            ':taken' => $taken,
+            ':completed' => $completed
         ]);
 
         $result = $stmt->fetchAll(\PDO::FETCH_CLASS,"System\\Availabilities\\Availability");

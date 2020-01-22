@@ -135,7 +135,7 @@ class AvailabilityHandler extends BaseHandler
                         ]);
                         $availability->complete($this->db);
 
-                        if($stmt->rowCount() == 1){
+                        if ($stmt->rowCount() == 1) {
 
                             $body = "Afspraak is afgerond!\n\n"
                                 . " U kunt eventuele informatie vinden in uw afspraak geschiedenis\n\n";

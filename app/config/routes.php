@@ -27,6 +27,7 @@ $routes = [
     'delete_availability' => 'AvailabilityHandler@delete',
     'edit_availability' => 'AvailabilityHandler@edit',
     'complete' => 'AvailabilityHandler@complete',
+    'history' => 'AdminHandler@history',
 
 
     //User routes

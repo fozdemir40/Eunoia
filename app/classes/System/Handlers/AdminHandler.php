@@ -39,6 +39,20 @@ class AdminHandler extends BaseHandler
 
     protected function history()
     {
+        if($this->session->keyExists('admin')){
+            $allBookings = new AvailabilitiesCollection();
+            $allBookings->add(Availability::getAllCompleted($this->db));
 
+
+        } else {
+            header('Location: notfound');
+            exit;
+        }
+
+        $this->renderTemplate([
+            'pageTitle' => 'Admin Dashboard',
+            'bookings' => $allBookings->get(),
+            'errors' => $this->errors,
+        ]);
     }
 }
