@@ -1,6 +1,7 @@
 <?php namespace System\Handlers;
 
 
+use System\Availabilities\AvailabilitiesCollection;
 use System\Children\AllChildren;
 use System\Children\Child;
 use System\Databases\Database;
@@ -51,6 +52,25 @@ class UserHandler extends BaseHandler
             'children' => $allChildren->get(),
             'userFirstName' => $userFirstName,
             'errors' => $this->errors
+        ]);
+    }
+
+    protected function history()
+    {
+        if($this->session->keyExists('user')){
+            $allBookings = new AvailabilitiesCollection();
+            $allBookings->add(Availability::getAllCompleted($this->db));
+
+
+        } else {
+            header('Location: notfound');
+            exit;
+        }
+
+        $this->renderTemplate([
+            'pageTitle' => 'Afpsraak geschiedenis',
+            'bookings' => $allBookings->get(),
+            'errors' => $this->errors,
         ]);
     }
 

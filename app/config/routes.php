@@ -3,15 +3,18 @@
 //Check if url has "admin" in it
 if (strpos($_SERVER['REQUEST_URI'], "admin") == false) {
     $dashboard = 'UserHandler@dashboard';
+    $history = 'UserHandler@history';
 } else {
     //AdminHandler
     $dashboard = 'AdminHandler@dashboard';
+    $history = 'AdminHandler@history';
 }
 
 $routes = [
-    '' => 'AccountHandler@login',
+    '' => 'HomeHandler@index',
 
     //Account routes
+    'login' => 'AccountHandler@login',
     'register' => 'AccountHandler@register',
     'logout' => 'AccountHandler@logout',
 
@@ -22,12 +25,14 @@ $routes = [
     //Changing dashboard between user or admin
     'dashboard' => $dashboard,
 
+    //Changing reservations history between user or admin
+    'history' => $history,
+
     //Admin routes
     'add_availability' => 'AvailabilityHandler@add',
     'delete_availability' => 'AvailabilityHandler@delete',
     'edit_availability' => 'AvailabilityHandler@edit',
     'complete' => 'AvailabilityHandler@complete',
-    'history' => 'AdminHandler@history',
 
 
     //User routes

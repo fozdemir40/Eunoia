@@ -5,9 +5,6 @@
  * @var $children
  */
 
-$numOfCols = 4;
-$rowCount = 0;
-$bootstrapColWidth = 12 / $numOfCols;
 
 ?>
 
@@ -17,11 +14,14 @@ $bootstrapColWidth = 12 / $numOfCols;
             <h1>Hallo! <?= $userFirstName ?></h1>
         </div>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <a href="<?= BASE_PATH; ?>calendar" class="btn btn-success">Bekijk Agenda</a>
             </div>
-            <div class="col-sm-4">
-                <a href="<?= BASE_PATH; ?>logout" class="btn btn-primary">logout here</a>
+            <div class="col-sm-3">
+                <a href="<?= BASE_PATH; ?>history" class="btn btn-success">Afspraak geschiedenis</a>
+            </div>
+            <div class="col-sm-3">
+                <a href="<?= BASE_PATH; ?>logout" class="btn btn-primary">Logout here</a>
             </div>
         </div>
         <div class="row">

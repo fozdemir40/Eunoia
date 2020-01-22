@@ -5,22 +5,19 @@
  */
 
 ?>
-<?php if (isset($_SESSION['admin'])): ?>
+<?php if (isset($_SESSION['user'])): ?>
     <div class="container">
         <div class="row">
             <h1>Admin</h1>
         </div>
         <div class="row">
-            <div class="col-sm-3">
-                <a href="<?= BASE_PATH; ?>admin/add_availability" class="btn btn-success">Voeg beschikbaarheid toe</a>
-            </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <a href="<?= BASE_PATH; ?>calendar" class="btn btn-success">Bekijk Agenda</a>
             </div>
-            <div class="col-sm-3">
-                <a href="<?= BASE_PATH; ?>admin/dashboard" class="btn btn-secondary">Terug naar dashboard</a>
+            <div class="col-md-3">
+                <a href="<?= BASE_PATH; ?>dashboard" class="btn btn-secondary">Terug naar dashboard</a>
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <a href="<?= BASE_PATH; ?>logout" class="btn btn-primary">Logout here</a>
             </div>
         </div>
