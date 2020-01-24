@@ -6,6 +6,7 @@ use System\Form\Data;
 use System\Availabilities\Availability;
 use System\Availabilities\AvailabilitiesCollection;
 use System\Form\Validation\BookingHistoryValidator;
+use System\Utils\Mail;
 
 class AvailabilityHandler extends BaseHandler
 {
@@ -141,7 +142,11 @@ class AvailabilityHandler extends BaseHandler
                                 . " U kunt eventuele informatie vinden in uw afspraak geschiedenis\n\n";
                             $user_email = $this->session->get('user')->email;
 
-                            mail($user_email, 'Afronding afpsraak', $body, 'From: ' . INFO_EMAIL);
+                            if(!Mail::send_mail($user_email, $body, 'Afspraak compleet')){
+                                $this->logger->error(new \Exception("User email is not validated"));
+                                $this->errors[] = "Uw email is niet geldig";
+                                exit;
+                            }
                             unset($stmt);
                             unset($this->db);
 

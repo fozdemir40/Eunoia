@@ -6,6 +6,7 @@ use System\Form\Validation\LoginValidator;
 use System\Form\Validation\RegisterValidator;
 use System\Form\Validation\ResetPassValidator;
 use System\Users\User;
+use System\Utils\Mail;
 use System\Utils\ActivationLink;
 
 class AccountHandler extends BaseHandler
@@ -142,7 +143,13 @@ class AccountHandler extends BaseHandler
                         $body = "Thank you for registering at Eunoia."
                             . "To activate your account, please click on this link:\n\n";
                         $body .= BASE_URL . 'activate?x=' . urldecode($e) . '&y=' . $active;
-                        mail($e, 'Registration Confirmation', $body, 'From: ' . INFO_EMAIL);
+
+                        if(!Mail::send_mail($e, $body, 'Registration Confirmation')){
+                            $this->logger->error(new \Exception("User email is not validated"));
+                            $this->errors[] = "Uw email is niet geldig";
+                            exit;
+                        }
+
                     }
 
                     if(isset($formData) && empty($this->errors)){
@@ -297,16 +304,17 @@ class AccountHandler extends BaseHandler
                             ]);
 
                             if($stmt->rowCount() == 1){
-                                $to = $e;
                                 $subject = 'Password reset for your Eunoia account';
                                 $message = 'You have requested a password reset. To reset your password'
                                     . 'please click on this link: \n\n'
                                     . $url;
-                                $headers = "From: Eunoia " . "<" . ADMIN_EMAIL . ">\r\n";
-                                $headers .= "Reply-To: " . ADMIN_EMAIL . "\r\n";
-                                $headers .= "Content-type: text/html\r\n";
 
-                                mail($to, $subject, $message, $headers);
+                                if(!Mail::send_mail($e, $message, $subject)){
+                                    $this->logger->error(new \Exception("User email is not validated"));
+                                    $this->errors[] = "Uw email is niet geldig";
+                                    exit;
+                                }
+
 
                                 $_SESSION['msg'] = '<div class="alert alert-success" role="alert"> '
                                     . 'Request succesfully handled! '

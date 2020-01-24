@@ -13,7 +13,8 @@
   },
   "require": {
     "ext-pdo": "*",
-    "ext-ctype": "*"
+    "ext-ctype": "*",
+    "swiftmailer/swiftmailer": "6.0"
   },
   "autoload": {
     "psr-4": {

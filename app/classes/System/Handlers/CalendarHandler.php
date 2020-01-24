@@ -9,6 +9,7 @@ use System\Availabilities\AvailabilitiesCollection;
 use System\Form\Data;
 use System\Form\Validation\BookingValidator;
 use System\Utils\Date;
+use System\Utils\Mail;
 
 class CalendarHandler extends BaseHandler
 {
@@ -166,8 +167,20 @@ class CalendarHandler extends BaseHandler
                         $body .= "Bedankt voor het reservering bij Eunoia!";
                         $user_email = $this->session->get('user')->email;
 
-                        mail($user_email, 'Afspraak bevestiging', $body, 'From: ' . INFO_EMAIL);
-                        mail(INFO_EMAIL, "Er is een nieuwe reservering gemaakt!", "Bekijk de informatie op uw dashboard", 'From '.INFO_EMAIL);
+                        //Email to user
+                        if(!Mail::send_mail($user_email, $body, 'Afspraak bevestiging')){
+                            $this->logger->error(new \Exception("User email is not validated"));
+                            $this->errors[] = "Uw email is niet geldig";
+                            exit;
+                        }
+
+                        //Email to admin9
+                        if(!Mail::send_mail(TEST_MAIL, 'Bekijk de informatie op uw dashboard', 'Er is een nieuwe reservering gemaakt!')){
+                            $this->logger->error(new \Exception("User email is not validated"));
+                            $this->errors[] = "Uw email is niet geldig";
+                            exit;
+                        }
+
 
                         unset($stmt);
                         unset($this->db);

@@ -17,6 +17,10 @@ define("BASE_PATH", "/");
 define("BASE_URL", "http://eunoia.local/");
 define("RESOURCES_PATH", "");
 
+// Dev testing tools
+define("TEST_MAIL", "elitea40@gmail.com");
+define("TEST_PASS", "FOkvart110YT");
+
 // Custom error handler
 set_error_handler(function ($severity, $message, $file, $line) {
     throw new ErrorException($message, $severity, $severity, $file, $line);
